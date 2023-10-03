@@ -21,7 +21,7 @@ node{
 
       stage ("docker build & run image"){
         
-          sh ''' docker build vprofile:pro .
+          sh ''' docker build -t vprofile:pro .
                  docker run -dp 9090:8080 vprofile:pro '''
       }
 }
