@@ -13,6 +13,11 @@ node{
            def mavenCMD = "${mavenHome}/bin/mvn"
            sh "${mavenCMD} sonar:sonar"
      }
+
+      stage ('nexus') {
+      
+      nexusArtifactUploader artifacts: [[artifactId: 'vproapp', classifier: '', file: 'target/vprofile-v2.war', type: 'war']], credentialsId: '6698ed7e-b188-4d3e-beab-e7387c40511d', groupId: 'v.in', nexusUrl: '18.117.147.210:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'vprofile/', version: '2.0'
+      }
      
   
 }
