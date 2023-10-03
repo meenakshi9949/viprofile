@@ -8,5 +8,11 @@ node{
            sh "${mavenCMD} clean package"
      }
 
+      stage('Build package'){
+           def mavenHome = tool name:"MAVEN3", type:"maven"
+           def mavenCMD = "${mavenHome}/bin/mvn"
+           sh "${mavenCMD} sonar:sonar"
+     }
+     
   
 }
